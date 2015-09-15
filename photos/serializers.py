@@ -13,7 +13,7 @@ class PhotoUploadSerializer(serializers.ModelSerializer):
 
 
 class PhotoSerializer(serializers.ModelSerializer):
-    file = serializers.ImageField(use_url=True)
+    photo = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Photo

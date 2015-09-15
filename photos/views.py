@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from photos.filters import PhotoFilter
 from rest_framework import views, viewsets, status
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.authentication import SessionAuthentication
@@ -10,6 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from photos.serializers import PhotoWithoutPathSerializer, PhotoSerializer
 from photos.serializers import PhotoUploadSerializer
+from photos.filters import PhotoFilter
 
 
 class PhotoUploadView(views.APIView):
@@ -41,7 +41,6 @@ class PhotoViewSet(viewsets.ModelViewSet):
     ordering_fields = ('name', 'created_at')
 
     def get_queryset(self):
-
         return self.request.user.photo_set.all()
 
     def get_serializer_class(self):
